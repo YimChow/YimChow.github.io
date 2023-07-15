@@ -1,3 +1,19 @@
+
+
+---
+layout: post
+title: template page
+categories: [cate1, cate2]
+description: some word here
+keywords: keyword1, keyword2
+mermaid: false
+sequence: false
+flow: false
+mathjax: false
+mindmap: false
+mindmap2: false
+---
+
 # SMALLCAP: Lightweight Image Captioning Prompted with Retrival Augmentation
 
 ### Abstract
@@ -62,6 +78,7 @@ prompt:
 > Similar image show {caption1} …… {captionk}. This image shows \________
 
 解码器根据此生成描述基于图片特征$V$和任务描述$X$，cross-attention layers的权重训练通过最小化预测$M$个token的交叉熵损失
+
 $$
 L_\theta=-\sum_{i=1}^M\log P_\theta(y_i|y_{<i},X,V;\theta)
 $$

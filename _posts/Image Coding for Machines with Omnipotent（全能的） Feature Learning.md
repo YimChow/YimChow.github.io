@@ -1,3 +1,19 @@
+
+
+---
+layout: post
+title: template page
+categories: [cate1, cate2]
+description: some word here
+keywords: keyword1, keyword2
+mermaid: false
+sequence: false
+flow: false
+mathjax: false
+mindmap: false
+mindmap2: false
+---
+
 # Image Coding for Machines with Omnipotent（全能的） Feature Learning
 
 ### Abstract
@@ -54,7 +70,7 @@ backbone: 以ResNet-50为例，Head = Layer 1; Tail = Layer 2 + Layer 3 + Layer 
 
 ##### Data Augmentation and Feature Extraction in Backbone Head
 
-$H_q\times W_q \rightarrow \frac{H_q}{4}\times\frac{W_q}{4}\times C$ 
+$H_q\times W_q \rightarrow \frac{H_q}{4}\times\frac{W_q}{4}\times C$
 
 ##### Information Filtering Module
 
@@ -71,9 +87,11 @@ D: 恢复到与IF module的输入一致
 用来map the feature to the space where contrastive loss is applied.
 
 projection layer是具有一层隐藏层的MLP：
+
 $$
 q=W^{(2)}\sigma(W^{(1)}(T(D(\tilde y_q))))
 $$
+
  $\sigma$是Relu激活层，W是全连接层
 
 ##### Generation of Keys
@@ -83,10 +101,13 @@ $$
 ##### Total Optimization Objectives
 
 InfoNCE：
+
 $$
 \mathcal L_q=-\log\frac{\exp(q\cdot k_+/\tau)}{\exp(q\cdot k_+/\tau)+\sum_{k_-}\exp(q\cdot k_-/\tau)}
 $$
+
 总的优化函数：
+
 $$
 \mathcal L=\mathcal L_q+\alpha\mathcal L_e
 $$
@@ -94,18 +115,21 @@ $$
 #### Stage 2: Learning-based Feature Compression
 
 和有损图像压缩一样，优化$R+\lambda D_C$
+
 $$
 \mathcal L_{rd}=\mathbb E[-\log_2(p_{\hat y|\psi}(\hat y|\psi))]+\lambda \frac{1}{WH}\sum_{x=1}^{W}\sum_{y=1}^{H}(f_{x,y}-\hat f_{x,y})^2
 $$
 
-
 更多的，因为压缩的特征是用来更好的处理下游任务，我们进一步在更深的特征层次保护语义保真性。（计算更深层次的特征表示，即backbone tail中的每一层）
+
 $$
 \mathcal L_f=\sum_{i=2}^4\lambda_i\frac{1}{W_iH_i}\sum_{x=1}^{W_i}\sum_{y=1}^{H_i}(\phi_if_{x,y}-\phi_i\hat f_{x,y})^2
 $$
+
 $\phi_i$表示一个可微函数
 
 总的损失函数：
+
 $$
 \mathcal L_{com}=\mathcal L_{rd}+\mathcal L_f
 $$
@@ -129,6 +153,3 @@ Evaluate: PASCAL VOC, MS COCO, Cityscapes
 提出了新的框架Omni-ICM
 
 SOTA
-
-
-

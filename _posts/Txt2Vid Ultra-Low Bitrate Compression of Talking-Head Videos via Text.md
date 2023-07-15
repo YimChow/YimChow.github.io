@@ -1,3 +1,19 @@
+
+
+---
+layout: post
+title: template page
+categories: [cate1, cate2]
+description: some word here
+keywords: keyword1, keyword2
+mermaid: false
+sequence: false
+flow: false
+mathjax: false
+mindmap: false
+mindmap2: false
+---
+
 # Txt2Vid: Ultra-Low Bitrate Compression of Talking-Head Videos via Text
 
 ### Abstract
@@ -7,4 +23,3 @@
 在网络较差的时候，有限带宽下能够媒体视频交流。
 
 ### Intro
-

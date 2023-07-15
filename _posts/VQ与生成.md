@@ -1,3 +1,19 @@
+
+
+---
+layout: post
+title: template page
+categories: [cate1, cate2]
+description: some word here
+keywords: keyword1, keyword2
+mermaid: false
+sequence: false
+flow: false
+mathjax: false
+mindmap: false
+mindmap2: false
+---
+
 # VQ与生成
 
 ## VQVAE
@@ -15,12 +31,12 @@ $z=E(x), \hat x=D(z)$
 从概率的角度：
 
 让encoder去学习一个条件分布$q_\phi(z|x)$，让decoder去学习型另一个条件概率$p_\theta(x|z)$，同时$z$服从先验分布$p(x)$，所以loss函数可以写作：
+
 $$
 ELBO(\theta,\phi)=\mathbb E_{z\sim q_\phi(z|x)}[\log p_\theta(x|z)]-KL(q_\phi(z|x)||p(z))
 $$
+
 ELBO即evidence low bound，即evidence（$x$）的最小期望
-
-
 
 生成模型的难点在于判断生成分布和真实分布的相似度。
 
@@ -38,7 +54,7 @@ $p(X)=\sum_Zp(X|Z)p(Z)$；假设$Z$服从正态分布，根据$Z$来计算$X$
 
 于是使用神经网络去拟合分布的均值和方差，能够从这个专属分布中采样出$z_k$出来，经过生成器后得到$\hat x_k=g(z_k)$，然后最小化$D(\hat x_k,x_k)$
 
->  问题：
+> 问题：
 >
 > 1. 重构过程受到噪声影响，但如果方差为0，就完全没有随机性，vae会退化成普通的ae
 
@@ -51,16 +67,18 @@ $$
 为了使模型具有生成能力，VAE要求每个$p(z_i|x_i)$都要向正态分布看齐
 
 如果看齐？使用loss
+
 $$
 \mathcal L_{\mu,\sigma^2}=\frac{1}{2}\sum_{i=1}^d(\mu_{(i)}^2+\sigma_{(i)}^2-\log\sigma_{(i)}^2-1)
 $$
+
 重参数技巧：在$\mathcal N(\mu,\sigma^2)$中采样一个$Z$，相当于从$\mathcal N(0,I)$中采样一个$\epsilon$，然后令$Z=\mu+\epsilon\times\sigma$
 
 KL散度：
+
 $$
 KL(p(x)||q(x))=\int p(x)\ln\frac{p(x)}{q(x)}dx
 $$
-
 
 ### VQ-VAE
 
@@ -82,9 +100,11 @@ $q(z|x)$中每个数字都是离散的整数，可以把这个数字写成独热
 VQ-VAE可以训练的参数有三部分：encoder，decoder，codebook
 
 损失函数：
+
 $$
 \mathcal L=\log p(x|z_q(x))+||sg[z_e(x)]-e||^2_2+\beta||z_e(x)-sg[e]||^2_2
 $$
+
 sg为stop gradient，即梯度反传到此为止，不再往前传。
 
 第一项是用来训练encoder和decoder的。在梯度反传的时候，$z_q$的梯度直接给了$z_e$
@@ -97,8 +117,6 @@ sg为stop gradient，即梯度反传到此为止，不再往前传。
 
 $p(z_1,z_2,z_3\cdots)=p(z_1)p(z_2|z_1)p(z_3|z_1,z_2)\cdots$
 
-
-
 ## VQGAN
 
 #### 离散编码特征表示方法
@@ -108,12 +126,15 @@ z_q=q(\hat z)=(\arg\min_{z_k\in\mathcal Z}||\hat z_{ij}-z_k||)\in\mathbb R^{h\ti
 $$
 
 训练方法：
+
 $$
 \mathcal L(E,G,Z)=||x-\hat x||+||sg[E(x)]-z_q||^2_2+\beta||sg[z_q]-E(x)||^2_2
 $$
+
 第一项为重建损失，第二项和第三项分别训练了codebook和encoder
 
 判别器：
+
 $$
 \mathcal L_{GAN}(\{E,G,Z\},D)=[\log D(x)+\log(1-D(\hat x))]
 $$
@@ -123,6 +144,7 @@ $$
 采用GPT-2，本来是用来处理语言模型的，迁移到VQGAN中，就是先预测出一个code，再一步步通过已经预测好的code去推断下一个code（这里的code都是指codebook中的）
 
 code的预测过程可以被视作自回归预测：当已有编码$s_{<i}$后，Transformer试图去学习预测下一个编码，即预测分布$p(s)=\prod_i p(s_i|s_{<i})$，这就可以表示为最大化对数似然分布：
+
 $$
 \mathcal L_\text{Tranformer}=\mathbb E_{x\sim p(x)}[-\log p(s)]
 $$

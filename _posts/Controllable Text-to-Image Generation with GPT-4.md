@@ -1,3 +1,19 @@
+
+
+---
+layout: post
+title: template page
+categories: [cate1, cate2]
+description: some word here
+keywords: keyword1, keyword2
+mermaid: false
+sequence: false
+flow: false
+mathjax: false
+mindmap: false
+mindmap2: false
+---
+
 # Controllable Text-to-Image Generation with GPT-4
 
 ### Abstract
@@ -32,7 +48,7 @@ GPT-4的在解决复杂编码问题的成功鼓励着本文调查如何利用语
 
 ##### 训练数据重构
 
-ControlNet不能准确的解释由GPT给出的草图或者提示 --> 需要finetune 
+ControlNet不能准确的解释由GPT给出的草图或者提示 --> 需要finetune
 
 困难：很难找到大量的对齐图片-草图对 --> 探索从现有图像数据集中使用注释的方法，并且模仿草图来缓解训练和测试数据之间的差距。
 
@@ -51,6 +67,3 @@ ControlNet不能准确的解释由GPT给出的草图或者提示 --> 需要finet
 ### Experiments
 
 ### Conclusion
-
-
-

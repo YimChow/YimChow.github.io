@@ -1,3 +1,19 @@
+
+
+---
+layout: post
+title: template page
+categories: [cate1, cate2]
+description: some word here
+keywords: keyword1, keyword2
+mermaid: false
+sequence: false
+flow: false
+mathjax: false
+mindmap: false
+mindmap2: false
+---
+
 # Tell Me What Happened: Unifying Text-guided Video Completion via Multimodal Masked Video Generation
 
 ### Abstract
@@ -49,6 +65,7 @@ VQGAN进一步通过一个GAN训练的Transformer模块来建模潜在空间的�
 如果VQGAN直接被应用在视频上，就可能忽视了帧之间时间上的相关性，将每一帧视为独立的图像，从而导致视频重建不流畅。
 
 为了灵活的解决，本工作提出了时序感知的VQGAN来将时序联系注入到潜在表示中。首先遵循VQGAN通过重构视频帧$v_i$来学习没目标视觉标记$z_i$
+
 $$
 \begin{align}
 z_i&=q(\text{Enc}^Q(v_i)|C)\\
@@ -57,15 +74,18 @@ v_i&=\text{Dec}^Q(z_i)\\
 &+\beta||sg[C_{z_i}]-\text{Enc}^Q(v_i)||^2_2+||\mathcal F(\hat v_i)-\mathcal F(v_i)||_1
 \end{align}
 $$
+
 $q$是量化操作，采取在可训练码本$C$中选取最近邻得到。$sg$为stop-gradient操作。
 
 为了在$z$中注入时间关系，T-VQ使用引入的对比时序推理进行训练。
+
 $$
 \begin{align}
 o_i&=\text{FC}^\text{T}(z_i,z_j)\\
 \mathcal L_T&=\text{BCELoss}(o_i, 0\text{ if }i>j\text{ else }1)
 \end{align}
 $$
+
 其中$j$是相同视频中随机抽取的一帧，FC^T是MLP分类器，BCELoss是二值交叉熵。**从$\mathcal L_T$中可以学习到时序信息。**$z$中暗含了时间的相关性。
 
 > 如何得到时序信息？从深度学习网络的loss中去隐含，将这个处理交给黑盒
@@ -75,13 +95,16 @@ $$
 $\mathcal M$掩盖了大多数的视频帧，以概率$p$，并且替换为一个独立的[SPAN] token，得到掩码后的视频$\mathcal {\bar V}$。本文的目标是在$\mathcal X$的指导下恢复缺失的区域。
 
 为了在视觉和语言模态之间进行建模，将Enc^Q应用于离散视觉标记，使用CLIP tokenize $\mathcal X$为word tokens $\{w_i\}^L_{i=1}$
+
 $$
 \begin{align}
 f_i^w,f_j^v&=\text{LP}^w(w_i),\text{LP}^v(z_j)\\
 \{h\}&=\text{Enc}^M([\{f^w\},\{f^v\}])
 \end{align}
 $$
+
 LP为linear projection（线性投影）
+
 $$
 \begin{align}
 \hat z_t&=\text{Dec}^M(\{\hat z_1,\cdots,\hat z_{t-1}\}|\{h\})\\
@@ -89,9 +112,11 @@ $$
 \mathcal L_M&=\sum_{t=1}^N\mathcal L_t
 \end{align}
 $$
+
 解码器基于VideoSwin建造。
 
 为了使$\mathcal M$更加高效，使用一个自适应的概率$p$而不是随机采样
+
 $$
 p_t=p_t+\alpha((\frac{\mathcal L_t}{\mathcal L_M}\sum p)-p_t)
 $$
@@ -117,4 +142,3 @@ infilling: $[\{w\},\{z_1,[\text{SPAN}],z_N\}]$
 ###### 那与压缩的关系在哪？
 
 跟压缩有关的就是量化操作。本文采用软量化（soft-to-hard vq)
-

@@ -1,3 +1,19 @@
+
+
+---
+layout: post
+title: template page
+categories: [cate1, cate2]
+description: some word here
+keywords: keyword1, keyword2
+mermaid: false
+sequence: false
+flow: false
+mathjax: false
+mindmap: false
+mindmap2: false
+---
+
 # Rethinking Semantic Image Compression Representation with Cross-modality Transfer
 
 ## Abstract
@@ -65,13 +81,17 @@ SCMC起到在语义图理解和图像重构之间连接的作用，有三层：�
 用LSGANs以端到端的方法训练模型。
 
 为了维持语义一致性和优化视觉质量，引入了新的项：DISTS损失，来进一步增强输入图片和重构图片之间的联系。通过$L_1$和[$L_{DISTS}$](https://arxiv.org/pdf/2004.07728.pdf)的执行，输入图像和生成图像之间的相似性得到了很大的提高，促进了概念表示
+
 $$
 L_{re}=\lambda_1L_1(I,I_{st})+\lambda_dL_{DISTS}(I,I_{st})
 $$
+
 所以目标函数为
+
 $$
 G^*=\arg\min_G\max_DL_d(G(I_{se},I_e),D(I))+\lambda_gL_g(G(I_{se},I_e))+L_{re}
 $$
+
 在端到端训练后，结构层结合了结构特征和语义图的纹理信息来推动图像生成。
 
 ### 信号层 Signal Layer
@@ -81,6 +101,7 @@ $$
 运用结构语义层的信息辅助解码。
 
 本层的损失函数
+
 $$
 L_{RD}=\lambda L_{mse}+R
 $$

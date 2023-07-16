@@ -56,7 +56,7 @@ $$
 
 #### 网络结构
 
-![image-20230605214236952](images/assets/image-20230605214236952.png)
+![image-20230605214236952](/images/assets/image-20230605214236952.png)
 
 用SpectralNorm替换InstaceNorm
 

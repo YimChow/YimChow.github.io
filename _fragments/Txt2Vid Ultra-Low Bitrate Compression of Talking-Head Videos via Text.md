@@ -1,6 +1,6 @@
 ---
 layout: fragment
-title: Txt2Vid: Ultra-Low Bitrate Compression of Talking-Head Videos via Text
+title: Txt2Vid -- Ultra-Low Bitrate Compression of Talking-Head Videos via Text
 categories: [视频压缩, 文本指导压缩]
 description: 用文本指导视频压缩，可以达到相当低的比特率，从而满足现实要求
 keywords: 文本指导视频压缩

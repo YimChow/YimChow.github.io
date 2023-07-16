@@ -1,6 +1,6 @@
 ---
 layout: fragment
-title: SMALLCAP: Lightweight Image Captioning Prompted with Retrival Augmentation
+title: SMALLCAP -- Lightweight Image Captioning Prompted with Retrival Augmentation
 categories: [检索增强, 图像字幕]
 description: 运用检索增强技术在Image Caption领域上
 keywords: SMALLCAP, 检索增强, 图像字幕
@@ -62,7 +62,7 @@ SMALLCAP可以转换到新的域，而无需额外的微调，可以以免于训
 
 #### Model
 
-![image-20230529211023702](images/assets/image-20230529211023702.png)
+![image-20230529211023702](/images/assets/image-20230529211023702.png)
 
  用multi-head cross-attention连接两个模型，只训练这个attention
 

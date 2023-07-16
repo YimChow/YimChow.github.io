@@ -1,6 +1,6 @@
 ---
 layout: fragment
-title: Tell Me What Happened: Unifying Text-guided Video Completion via Multimodal Masked Video Generation
+title: Tell Me What Happened -- Unifying Text-guided Video Completion via Multimodal Masked Video Generation
 categories: [视频生成, 文本指导]
 description: 用文本指导视频生成来补全视频，包括视频前、后、中间帧
 keywords: 视频指导生成, 视频补全 
@@ -48,7 +48,7 @@ mindmap2: false
 
 ##### Overview
 
-![image-20230519164722182](images/assets/image-20230519164722182.png)
+![image-20230519164722182](/images/assets/image-20230519164722182.png)
 
 为了建模视频和语言，提出了时间感知的VQGAN来将一帧表示为视觉符号，将其转换为与文字相同的离散空间。
 

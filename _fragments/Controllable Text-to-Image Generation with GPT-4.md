@@ -1,19 +1,16 @@
-
-
 ---
-layout: post
-title: template page
-categories: [cate1, cate2]
-description: some word here
-keywords: keyword1, keyword2
+layout: fragment
+title: Controllable Text-to-Image Generation with GPT-4
+categories: [大模型, 文生图]
+description: 利用GPT-4的能力进行可控文生图的生成
+keywords: GPT-4, 可控文生图
 mermaid: false
 sequence: false
 flow: false
-mathjax: false
+mathjax: true
 mindmap: false
 mindmap2: false
 ---
-
 # Controllable Text-to-Image Generation with GPT-4
 
 ### Abstract

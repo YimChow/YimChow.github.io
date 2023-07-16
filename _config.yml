@@ -84,7 +84,7 @@ navs:
   #     mobile-hidden: true
 
   - href: /fragments/
-    label: 片段
+    label: 论文阅读
 
   - href: /wiki/
     label: 维基

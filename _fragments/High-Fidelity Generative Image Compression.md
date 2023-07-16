@@ -2,8 +2,8 @@
 layout: fragment
 title: High-Fidelity Generative Image Compression
 categories: [图像压缩]
-description: some word here
-keywords: keyword1, keyword2
+description: 高自由度的、生成式的图像压缩
+keywords: 生成式图像压缩, baseline
 mermaid: false
 sequence: false
 flow: false
@@ -52,11 +52,11 @@ $$
 \mathcal L_D=\mathbb E_{x\sim p_X}[-\log(1-D(x^{'},y))]+\mathbb E_{x\sim p_X}[-\log (D(x,y))].
 $$
 
-在本文的设置中，有两项和比特率不一致。对于固定的$\lambda$，不同的其他超参会导致不同的比特率，导致比较的困难。为了缓解这一现象，使用了超参“目标码率”$r_t$，并且替换掉$\lambda$，如果$r(y)>r_t$，则$\lambda=\lambda^{(a)}$，否则$\lambda=\lambda^{(b)}$。设定$\lambda^{(a)}\gg\lambda^{(b)}$
+在本文的设置中，有两项和比特率不一致。对于固定的$$\lambda$$，不同的其他超参会导致不同的比特率，导致比较的困难。为了缓解这一现象，使用了超参“目标码率”$$r_t$$，并且替换掉$$\lambda$$，如果$$r(y)>r_t$$，则$$\lambda=\lambda^{(a)}$$，否则$$\lambda=\lambda^{(b)}$$。设定$$\lambda^{(a)}\gg\lambda^{(b)}$$
 
 #### 网络结构
 
-![image-20230605214236952](C:\Users\Yimin\AppData\Roaming\Typora\typora-user-images\image-20230605214236952.png)
+![image-20230605214236952](image/assets/image-20230605214236952.png)
 
 用SpectralNorm替换InstaceNorm
 

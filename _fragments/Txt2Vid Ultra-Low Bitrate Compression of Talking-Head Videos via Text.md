@@ -1,19 +1,16 @@
-
-
 ---
-layout: post
-title: template page
-categories: [cate1, cate2]
-description: some word here
-keywords: keyword1, keyword2
+layout: fragment
+title: Txt2Vid: Ultra-Low Bitrate Compression of Talking-Head Videos via Text
+categories: [视频压缩, 文本指导压缩]
+description: 用文本指导视频压缩，可以达到相当低的比特率，从而满足现实要求
+keywords: 文本指导视频压缩
 mermaid: false
 sequence: false
 flow: false
-mathjax: false
+mathjax: true
 mindmap: false
 mindmap2: false
 ---
-
 # Txt2Vid: Ultra-Low Bitrate Compression of Talking-Head Videos via Text
 
 ### Abstract

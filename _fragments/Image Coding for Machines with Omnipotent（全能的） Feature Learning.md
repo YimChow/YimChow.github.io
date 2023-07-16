@@ -1,15 +1,15 @@
 
 
 ---
-layout: post
-title: template page
-categories: [cate1, cate2]
-description: some word here
-keywords: keyword1, keyword2
+layout: fragment
+title: Image Coding for Machines with Omnipotent Feature Learning
+categories: [图像压缩, 面向下游任务的压缩]
+description: 用一个压缩变量来完成多种下游任务
+keywords: 全能变量, 面向下游任务的压缩
 mermaid: false
 sequence: false
 flow: false
-mathjax: false
+mathjax: true
 mindmap: false
 mindmap2: false
 ---
@@ -54,7 +54,7 @@ IF模块 = Encoder + Decoder + Entropy Estimation Model
 
 #### Overview of Omni-ICM Pipeline
 
-![image-20230701170349971](./assets/image-20230701170349971.png)
+![image-20230701170349971](/assets/image-20230701170349971.png)
 
 IF模块：为了协调保留的语义信息和抛弃的语义不相关冗余
 
@@ -64,21 +64,21 @@ IF模块：为了协调保留的语义信息和抛弃的语义不相关冗余
 
 ##### Basic Network Archtecture
 
-采用$4\times$下采样因子来提取Omniponent Feature $f$，以保证内容结构和布局空间的完整性。
+采用$$4\times$$下采样因子来提取Omniponent Feature $$f$$，以保证内容结构和布局空间的完整性。
 
 backbone: 以ResNet-50为例，Head = Layer 1; Tail = Layer 2 + Layer 3 + Layer 4
 
 ##### Data Augmentation and Feature Extraction in Backbone Head
 
-$H_q\times W_q \rightarrow \frac{H_q}{4}\times\frac{W_q}{4}\times C$
+$$H_q\times W_q \rightarrow \frac{H_q}{4}\times\frac{W_q}{4}\times C$$
 
 ##### Information Filtering Module
 
-E: $8\times$下采样，$y_q$：$\frac{H_q}{32}\times\frac{W_q}{32}\times C_y$
+E: $$8\times$$下采样，$$y_q$$：$$\frac{H_q}{32}\times\frac{W_q}{32}\times C_y$$
 
-全分解熵模型：$p_{\tilde y_q|\phi_o}(\tilde y_q|\phi_o)=(\prod_ip_{\tilde y_q|\phi_o}(\phi_o)*\mathcal U(-\frac{1}{2},\frac{1}{2}))(\tilde y_q)$
+全分解熵模型：$$p_{\tilde y_q|\phi_o}(\tilde y_q|\phi_o)=(\prod_ip_{\tilde y_q|\phi_o}(\phi_o)*\mathcal U(-\frac{1}{2},\frac{1}{2}))(\tilde y_q)$$
 
-熵损失：$\mathcal L_e=\mathbb E[-\log_2(p_{\tilde y|\phi_o}(\tilde y_q|\phi_o))]$
+熵损失：$$\mathcal L_e=\mathbb E[-\log_2(p_{\tilde y|\phi_o}(\tilde y_q|\phi_o))]$$
 
 D: 恢复到与IF module的输入一致
 
@@ -92,7 +92,7 @@ $$
 q=W^{(2)}\sigma(W^{(1)}(T(D(\tilde y_q))))
 $$
 
- $\sigma$是Relu激活层，W是全连接层
+ $$\sigma$$是Relu激活层，W是全连接层
 
 ##### Generation of Keys
 
@@ -114,7 +114,7 @@ $$
 
 #### Stage 2: Learning-based Feature Compression
 
-和有损图像压缩一样，优化$R+\lambda D_C$
+和有损图像压缩一样，优化$$R+\lambda D_C$$
 
 $$
 \mathcal L_{rd}=\mathbb E[-\log_2(p_{\hat y|\psi}(\hat y|\psi))]+\lambda \frac{1}{WH}\sum_{x=1}^{W}\sum_{y=1}^{H}(f_{x,y}-\hat f_{x,y})^2
@@ -126,7 +126,7 @@ $$
 \mathcal L_f=\sum_{i=2}^4\lambda_i\frac{1}{W_iH_i}\sum_{x=1}^{W_i}\sum_{y=1}^{H_i}(\phi_if_{x,y}-\phi_i\hat f_{x,y})^2
 $$
 
-$\phi_i$表示一个可微函数
+$$\phi_i$$表示一个可微函数
 
 总的损失函数：
 

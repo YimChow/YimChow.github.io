@@ -1,5 +1,3 @@
-
-
 ---
 layout: fragment
 title: Image Coding for Machines with Omnipotent Feature Learning
@@ -54,11 +52,11 @@ IF模块 = Encoder + Decoder + Entropy Estimation Model
 
 #### Overview of Omni-ICM Pipeline
 
-![image-20230701170349971](/assets/image-20230701170349971.png)
+![image-20230701170349971](/images/assets/image-20230701170349971.png)
 
 IF模块：为了协调保留的语义信息和抛弃的语义不相关冗余
 
-![image-20230701171144630](./assets/image-20230701171144630.png)
+![image-20230701171144630](/images/assets/image-20230701171144630.png)
 
 #### Stage 1: Omnipotent Feature Learning
 

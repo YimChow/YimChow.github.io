@@ -1,5 +1,3 @@
-
-
 ---
 layout: fragment
 title: Tell Me What Happened: Unifying Text-guided Video Completion via Multimodal Masked Video Generation

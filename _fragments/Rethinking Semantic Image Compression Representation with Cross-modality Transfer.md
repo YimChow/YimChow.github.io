@@ -1,5 +1,3 @@
-
-
 ---
 layout: fragment
 title: Rethinking Semantic Image Compression Representation with Cross-modality Transfer

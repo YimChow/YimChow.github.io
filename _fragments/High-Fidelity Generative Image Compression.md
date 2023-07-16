@@ -1,7 +1,7 @@
 ---
-layout: post
-title: template page
-categories: [cate1, cate2]
+layout: fragment
+title: High-Fidelity Generative Image Compression
+categories: [图像压缩]
 description: some word here
 keywords: keyword1, keyword2
 mermaid: false
